@@ -38,7 +38,6 @@ fn main() {
         let now = Instant::now();
         let elapsed_secs = now.duration_since(prev_loop_time).as_millis() as f64 / 1000.0;
         prev_loop_time = now;
-        //drops.par_iter_mut().for_each(|x| x.update(elapsed_secs));
         drop_controller.event(elapsed_secs, &e);
         if let Some(args) = e.render_args() {
             gl.draw(args.viewport(), |c, g| {
